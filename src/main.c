@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <SDL2/SDL.h>
-
 #include "4mb/app.h"
+#include "4mb/scene.h"
+
+#include "test_scene.h"
 
 int main(int argc, char* argv[])
 {
@@ -14,7 +14,9 @@ int main(int argc, char* argv[])
         }
     };
 
-    CreateApp(&app_builder);
+    InitializeApp(&app_builder);
+    RegisterScene(0, &TestScene);
+
     StartApp();
     CloseApp();
 }

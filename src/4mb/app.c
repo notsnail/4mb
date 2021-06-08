@@ -1,16 +1,16 @@
 #include "app.h"
 
-#include <stdlib.h>
-#include <stdbool.h>
 #include <SDL2/SDL.h>
 
+#include "def.h"
 #include "events.h"
+#include "scene.h"
 
 static SDL_Window* window = NULL;
 
-void CreateApp(AppBuilder* builder)
+void InitializeApp(AppBuilder* builder)
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
 
     window = SDL_CreateWindow(
         builder->app_name,
@@ -28,15 +28,30 @@ void CreateApp(AppBuilder* builder)
     }
 }
 
-void CloseApp()
-{
-    SDL_Quit();
-}
-
 void StartApp()
 {
+    InitializeEvents();
+
     while (!HasExitBeenRequested())
     {
         PollEvents();
+        UpdateScene(GetDeltaTime());
+
+        DrawScene();
+        // flip screen and present
     }
+}
+
+void CloseApp()
+{
+    UnloadScene(); // unload bound scene
+
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+}
+
+void ForceCloseApp(i32 code)
+{
+    CloseApp();
+    exit(code);
 }

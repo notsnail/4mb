@@ -8,7 +8,8 @@ typedef struct
     Vector2 window;
 } AppBuilder;
 
-extern void CreateApp(AppBuilder* builder);
-extern void CloseApp();
+extern void InitializeApp(AppBuilder* builder);
 
 extern void StartApp();
+extern void CloseApp();
+extern void ForceCloseApp();
