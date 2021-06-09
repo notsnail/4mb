@@ -60,7 +60,10 @@ void PollEvents()
             case SDL_QUIT: RequestExit(); break;
             case SDL_KEYDOWN:
                 keyboard_array[event.key.keysym.scancode].down = true;
-                keyboard_array[event.key.keysym.scancode].pressed = true;
+                if (event.key.repeat == false) // if not a repeat then mark it as a new press
+                {
+                    keyboard_array[event.key.keysym.scancode].pressed = true;
+                }
                 break;
             case SDL_KEYUP:
                 keyboard_array[event.key.keysym.scancode].down = false;
@@ -100,4 +103,6 @@ bool IsKeyPressed(i32 key)
     {
         return false;
     }
+
+    return keyboard_array[key].pressed;
 }

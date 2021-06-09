@@ -18,11 +18,15 @@ static void Unload()
 static void Update(f32 delta)
 {
     // printf("delta: %f\n", delta);
-    if (IsKeyDown(KEY_A))
+    if (IsKeyPressed(KEY_A))
     {
         printf("key a pressed.\n");
     }
 
+    if (IsKeyDown(KEY_B))
+    {
+        printf("key b pressed.\n");
+    }
 }
 
 static void Draw()
