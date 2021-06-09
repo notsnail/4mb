@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "4mb/events.h"
+#include "4mb/video.h"
 
 static int Init()
 {
@@ -31,7 +32,7 @@ static void Update(f32 delta)
 
 static void Draw()
 {
-
+    VideoClear((Color) { 223, 123, 111, 255 });
 }
 
 Scene TestScene = {

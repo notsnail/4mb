@@ -5,6 +5,7 @@
 #include "def.h"
 #include "events.h"
 #include "scene.h"
+#include "video.h"
 
 static SDL_Window* window = NULL;
 
@@ -24,8 +25,10 @@ void InitializeApp(AppBuilder* builder)
     if (window == NULL)
     {
         printf("window: failed to initialize.\n");
-        exit(-1);
+        ForceCloseApp(-1);
     }
+
+    InitVideo(window, builder->window.x, builder->window.y);
 }
 
 void StartApp()
@@ -37,8 +40,10 @@ void StartApp()
         PollEvents();
         UpdateScene(GetDeltaTime());
 
+        BeginDrawing();
         DrawScene();
-        // flip screen and present
+        EndDrawing();
+        
     }
 }
 
@@ -46,6 +51,7 @@ void CloseApp()
 {
     UnloadScene(); // unload bound scene
 
+    CloseVideo();
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
