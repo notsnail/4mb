@@ -45,12 +45,11 @@ void PollEvents()
 
     // process events
 
-    // ready keyboard down vars
+    // reset keyboard down vars
     for (i32 i = 0; i < NUM_KEYBOARDKEY; i++)
     {
         keyboard_array[i].pressed = false;
     }
-
 
     SDL_Event event;
     while (SDL_PollEvent(&event))
