@@ -20,7 +20,7 @@ static void Update(f32 delta)
     // printf("delta: %f\n", delta);
     if (IsKeyPressed(KEY_A))
     {
-        printf("key a pressed.\n");
+        printf("key a pressed, delta: %f\n", delta);
     }
 
     if (IsKeyDown(KEY_B))

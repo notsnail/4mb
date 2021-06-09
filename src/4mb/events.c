@@ -6,11 +6,12 @@
 // generic vars
 static bool request_exit = false;
 
-// delta time vars
+// time vars
 static u64 dnow;
 static u64 dlast;
-
 static d32 delta_time;
+
+static d32 fps;
 
 // keyboard-related vars and structs
 typedef struct
@@ -38,13 +39,11 @@ void InitializeEvents()
 
 void PollEvents()
 {
-    // update delta time
     dlast = dnow;
     dnow = SDL_GetPerformanceCounter();
     delta_time = (d32) ((dnow - dlast) * 1000 / (d32) SDL_GetPerformanceFrequency());
 
     // process events
-
     // reset keyboard down vars
     for (i32 i = 0; i < NUM_KEYBOARDKEY; i++)
     {
