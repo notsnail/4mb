@@ -14,4 +14,4 @@ extern void CloseVideo();
 // drawing functions
 extern void BeginDrawing();
 extern void EndDrawing();
-extern void VideoClear(Color clear_color);
+extern void ClearScreen(Color clear_color);

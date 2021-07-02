@@ -17,8 +17,8 @@ void InitializeApp(AppBuilder* builder)
         builder->app_name,
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
-        builder->window.x,
-        builder->window.y,
+        builder->window.dim.x,
+        builder->window.dim.y,
         SDL_WINDOW_SHOWN
     );
 
@@ -28,7 +28,11 @@ void InitializeApp(AppBuilder* builder)
         ForceCloseApp(-1);
     }
 
-    InitVideo(window, builder->window.x, builder->window.y);
+    InitVideo(
+        window,
+        builder->window.dim.x,
+        builder->window.dim.y
+    );
 }
 
 void StartApp()

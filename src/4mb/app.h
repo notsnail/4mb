@@ -4,8 +4,13 @@
 
 typedef struct
 {
-    const char* app_name;
-    Vector2 window;
+    const char* app_name; // also used as window title;
+    struct 
+    {
+        Vector2 dim;
+        bool resizable;
+    } window;
+    Vector2 viewport;
 } AppBuilder;
 
 extern void InitializeApp(AppBuilder* builder);

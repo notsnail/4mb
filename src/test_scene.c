@@ -32,7 +32,7 @@ static void Update(f32 delta)
 
 static void Draw()
 {
-    VideoClear((Color) { 223, 123, 111, 255 });
+    ClearScreen((Color) { 223, 123, 111, 255 });
 }
 
 Scene TestScene = {

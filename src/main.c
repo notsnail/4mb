@@ -9,8 +9,11 @@ int main(int argc, char* argv[])
     AppBuilder app_builder = {
         .app_name = "4mb test",
         .window = {
-            .x = 640,
-            .y = 480
+            .dim = {
+                .x = 640,
+                .y = 480
+            },
+            .resizable = false
         }
     };
 

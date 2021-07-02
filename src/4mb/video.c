@@ -7,7 +7,6 @@
 
 // static vars
 static SDL_Renderer* renderer;
-
 static SDL_Texture* render_texture;
 
 // functions
@@ -53,7 +52,7 @@ void EndDrawing()
     SDL_RenderPresent(renderer);
 }
 
-void VideoClear(Color color)
+void ClearScreen(Color color)
 {
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderClear(renderer);
